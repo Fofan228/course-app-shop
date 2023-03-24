@@ -1,6 +1,7 @@
 <?php
 
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\ForgotPasswordController;
     use App\Http\Controllers\IndexController;
     use App\Http\Controllers\RegisterController;
     use Illuminate\Support\Facades\Route;
@@ -17,6 +18,10 @@
 
         Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
         Route::post('/register_process', [RegisterController::class, 'register'])->name('register_process');
+
+        Route::get('/forgot_password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('forgot_password');
+        Route::post('/forgot_password_process', [ForgotPasswordController::class, 'forgotPassword'])->name('forgot_password_process');
+        Route::get('/complete_forgot_password', [ForgotPasswordController::class, 'showCompleteForgotPassword'])->name('complete_forgot_password');
     });
 
 

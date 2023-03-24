@@ -25,7 +25,8 @@
                 @enderror
 
                 <div>
-                    <a href="#" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Забыли пароль?</a>
+                    <a href="{{ route('forgot_password') }}"
+                       class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Забыли пароль?</a>
                 </div>
 
                 <div>
