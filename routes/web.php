@@ -7,7 +7,7 @@
     use App\Http\Controllers\RegisterController;
     use Illuminate\Support\Facades\Route;
 
-    Route::get('/', [IndexController::class, 'index'])->name('home');
+    Route::get('/', IndexController::class)->name('index');
 
     Route::middleware("auth")->group(function () {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
