@@ -2,10 +2,28 @@
 
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
     class Product extends Model
     {
-        use HasFactory;
+//        public function getCategory()
+//        {
+//            return DB::table('categories')
+//                ->find($this->category_id);
+//        }
+//
+//        public function getBrand()
+//        {
+//            return DB::table('brands')
+//                ->find($this->brand_id);
+//        }
+        public function category()
+        {
+            return $this->belongsTo(Category::class);
+        }
+
+        public function brand()
+        {
+            return $this->belongsTo(Brand::class);
+        }
     }
