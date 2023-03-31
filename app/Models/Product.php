@@ -26,4 +26,8 @@
         {
             return $this->belongsTo(Brand::class);
         }
+
+        public function baskets() {
+            return $this->belongsToMany(Basket::class)->withPivot('quantity');
+        }
     }

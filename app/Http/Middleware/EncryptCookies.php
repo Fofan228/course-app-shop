@@ -12,6 +12,5 @@
          * @var array<int, string>
          */
         protected $except = [
-            //
         ];
     }
