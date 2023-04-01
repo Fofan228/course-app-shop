@@ -22,7 +22,7 @@
          */
         public function boot(): void
         {
-            Model::preventLazyLoading(!app()->isProduction());
+//            Model::preventLazyLoading(!app()->isProduction());
             Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
 
             DB::whenQueryingForLongerThan(500, function (Connection $connection) {

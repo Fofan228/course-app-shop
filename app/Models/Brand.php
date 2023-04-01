@@ -6,14 +6,12 @@
 
     class Brand extends Model
     {
-//        public function getProducts()
-//        {
-//            return DB::table('products')
-//                ->where('brand_id', $this->id)
-//                ->get();
-//        }
         public function products()
         {
             return $this->hasMany(Product::class);
+        }
+
+        public static function popular() {
+            return self::withCount('products')->orderByDesc('products_count')->limit(5)->get();
         }
     }

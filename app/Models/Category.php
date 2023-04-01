@@ -6,14 +6,13 @@
 
     class Category extends Model
     {
-//        public function getProducts()
-//        {
-//            return DB::table('products')
-//                ->where('category_id', $this->id)
-//                ->get();
-//        }
+
         public function products()
         {
             return $this->hasMany(Product::class);
+        }
+
+        public static function roots() {
+            return self::where('parent_id', 0)->get();
         }
     }
