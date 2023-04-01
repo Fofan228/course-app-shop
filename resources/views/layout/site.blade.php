@@ -13,17 +13,17 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ route('catalog.index') }}">Магазин</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="{{ route('index') }}">Магазин</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbar-example" aria-controls="navbar-example"
+                data-target="#navbar-example" aria-controls="navbar-larashop"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbar-example">
+        <div class="collapse navbar-collapse" id="navbar-larashop">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Каталог</a>
+                    <a class="nav-link" href="{{ route('catalog.index') }}">Каталог</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Доставка</a>
@@ -32,6 +32,7 @@
                     <a class="nav-link" href="#">Контакты</a>
                 </li>
             </ul>
+
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search"
                        placeholder="Поиск по каталогу" aria-label="Search">
@@ -39,6 +40,12 @@
                         type="submit">Искать
                 </button>
             </form>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('basket.index') }}">Корзина</a>
+                </li>
+            </ul>
         </div>
     </nav>
 

@@ -44,14 +44,15 @@
         ->where('id', '[0-9]+')
         ->name('basket.add');
 
-    Route::post('/basket/plus/{id}', 'BasketController@plus')
+    Route::post('/basket/plus/{id}', [BasketController::class, 'plus'])
         ->where('id', '[0-9]+')
         ->name('basket.plus');
-    Route::post('/basket/minus/{id}', 'BasketController@minus')
+    Route::post('/basket/minus/{id}', [BasketController::class, 'minus'])
         ->where('id', '[0-9]+')
         ->name('basket.minus');
 
-    Route::post('/basket/remove/{id}', 'BasketController@remove')
+    Route::post('/basket/remove/{id}', [BasketController::class, 'remove'])
         ->where('id', '[0-9]+')
         ->name('basket.remove');
-    Route::post('/basket/clear', 'BasketController@clear')->name('basket.clear');
+
+    Route::post('/basket/clear', [BasketController::class, 'clear'])->name('basket.clear');
