@@ -41,10 +41,25 @@
                 </button>
             </form>
 
+            <!-- Этот блок расположен справа -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('basket.index') }}">Корзина</a>
                 </li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('auth.login') }}">Войти</a>
+                    </li>
+                    @if (Route::has('auth.register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('auth.register') }}">Регистрация</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.index') }}">Личный кабинет</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>
@@ -53,14 +68,16 @@
         <div class="col-md-3">
             @include('layout.part.roots')
             @include('layout.part.brands')
-            <!--
-        <h4>Разделы каталога</h4>
-        <p>Здесь будут корневые разделы</p>
-        <h4>Популярные бренды</h4>
-        <p>Здесь будут популярные бренды</p>
-        -->
         </div>
         <div class="col-md-9">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible mt-4" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ $message }}
+                </div>
+            @endif
             @yield('content')
         </div>
     </div>

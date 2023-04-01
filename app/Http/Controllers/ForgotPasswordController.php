@@ -29,7 +29,7 @@
 
             Mail::to($user)->send(new ForgotPassword($password));
 
-            return redirect(route('complete_forgot_password'));
+            return redirect(route('auth.completeForgotPassword'));
         }
 
         public function showCompleteForgotPassword()

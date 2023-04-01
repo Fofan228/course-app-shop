@@ -28,8 +28,9 @@
 
             if ($user) {
                 auth("web")->login($user);
+                session()->flash('success', 'Регистрация на сайте прошла успешно');
             }
 
-            return redirect(route("home"));
+            return redirect(route('catalog.index'));
         }
     }

@@ -19,16 +19,18 @@
             ]);
 
             if (auth("web")->attempt($data)) {
-                return redirect(route("home"));
+                session()->flash('success', 'Вы успешно вошли в личный кабинет');
+                return redirect(route('catalog.index'));
             }
 
-            return redirect(route("login"))->withErrors(["email" => "Ошбика авторизации, пользователь не найден"]);
+            return redirect(route('auth.login'))->withErrors(["email" => "Ошбика авторизации, пользователь не найден"]);
         }
 
         public function logout()
         {
             auth("web")->logout();
+            session()->flash('success', 'Вы вышли из личного кабинета');
 
-            return redirect(route("home"));
+            return redirect(route('catalog.index'));
         }
     }
