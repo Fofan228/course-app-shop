@@ -2,6 +2,7 @@
 
     namespace App\Http;
 
+    use App\Http\Middleware\Administrator;
     use App\Http\Middleware\Authenticate;
     use App\Http\Middleware\EncryptCookies;
     use App\Http\Middleware\PreventRequestsDuringMaintenance;
@@ -77,6 +78,7 @@
          */
         protected $middlewareAliases = [
             'auth' => Authenticate::class,
+            'admin' => Administrator::class,
             'auth.basic' => AuthenticateWithBasicAuth::class,
             'auth.session' => AuthenticateSession::class,
             'cache.headers' => SetCacheHeaders::class,

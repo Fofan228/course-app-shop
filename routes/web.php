@@ -1,5 +1,6 @@
 <?php
 
+    use App\Http\Controllers\Admin\AdminController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BasketController;
     use App\Http\Controllers\CatalogController;
@@ -11,9 +12,12 @@
 
     Route::get('/', IndexController::class)->name('index');
 
+    Route::name('admin.')->prefix('admin')->group(function () {
+        Route::get('index', [AdminController::class, 'index'])->name('index');
+    });
+
     Route::middleware("auth")->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-//        Route::get('index', [UserController::class, 'index'])->name('user.index');
         Route::name('user.')->prefix('user')->group(function () {
             Route::get('index', [UserController::class, 'index'])->name('index');
         });
