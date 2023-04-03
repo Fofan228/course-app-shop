@@ -65,3 +65,7 @@
         ->name('basket.remove');
 
     Route::post('/basket/clear', [BasketController::class, 'clear'])->name('basket.clear');
+
+    Route::post('/basket/saveOrder', [BasketController::class, 'saveOrder'])->name('basket.saveOrder');
+
+    Route::get('/basket/success', [BasketController::class, 'success'])->name('basket.success');

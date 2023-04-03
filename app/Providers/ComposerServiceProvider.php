@@ -31,6 +31,10 @@
                 $view->with(['items' => Brand::popular()]);
             });
 
+//            View::composer('layout.site', function($view) {
+//                $view->with(['positions' => Basket::getBasket()->products->count()]);
+//            });
+
             View::composer('layout.site', function ($view) {
                 $view->with(['positions' => Basket::getCount()]);
             });
