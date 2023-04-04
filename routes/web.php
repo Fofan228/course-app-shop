@@ -3,6 +3,7 @@
     use App\Http\Controllers\Admin\AdminController;
     use App\Http\Controllers\Admin\BrandController;
     use App\Http\Controllers\Admin\CategoryController;
+    use App\Http\Controllers\Admin\OrderController;
     use App\Http\Controllers\Admin\ProductController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BasketController;
@@ -15,16 +16,31 @@
 
     Route::get('/', IndexController::class)->name('index');
 
-    Route::name('admin.')->prefix('admin')->group(function () {
+    Route::group([
+        'as' => 'admin.',
+        'prefix' => 'admin',
+        'middleware' => ['auth', 'admin']
+    ], function () {
         Route::get('index', [AdminController::class, 'index'])->name('index');
+
         Route::resource('category', CategoryController::class);
+
         Route::resource('brand', BrandController::class);
+
         Route::resource('product', ProductController::class);
         Route::get('product/category/{category}', [ProductController::class, 'category'])
             ->name('product.category');
+
+        Route::resource('order', OrderController::class, [
+            'except' => [
+                'create',
+                'store',
+                'destroy'
+            ]
+        ]);
     });
 
-    Route::middleware("auth")->group(function () {
+    Route::middleware('auth')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
         Route::name('user.')->prefix('user')->group(function () {
             Route::get('index', [UserController::class, 'index'])->name('index');
