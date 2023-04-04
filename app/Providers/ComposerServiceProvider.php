@@ -38,5 +38,9 @@
             View::composer('layout.site', function ($view) {
                 $view->with(['positions' => Basket::getCount()]);
             });
+
+            View::composer('layout.part.roots', function ($view) {
+                $view->with(['items' => Category::all()]);
+            });
         }
     }

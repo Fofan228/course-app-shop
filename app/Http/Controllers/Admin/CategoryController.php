@@ -4,8 +4,8 @@
 
     use App\Helpers\ImageSaver;
     use App\Http\Controllers\Controller;
+    use App\Http\Requests\CategoryCatalogRequest;
     use App\Models\Category;
-    use Illuminate\Http\Request;
 
     class CategoryController extends Controller
     {
@@ -21,8 +21,8 @@
          */
         public function index()
         {
-            $roots = Category::roots();
-            return view('admin.category.index', compact('roots'));
+            $items = Category::all();
+            return view('admin.category.index', compact('items'));
         }
 
         /**
@@ -30,14 +30,14 @@
          */
         public function create()
         {
-            $parents = Category::roots();
-            return view('admin.category.create', compact('parents'));
+            $items = Category::all();
+            return view('admin.category.create', compact('items'));
         }
 
         /**
          * Store a newly created resource in storage.
          */
-        public function store(Request $request)
+        public function store(CategoryCatalogRequest $request)
         {
             $data = $request->except(['_token', '_method']);
             $data['image'] = $this->imageSaver->upload($request, null, 'category');
@@ -59,14 +59,14 @@
          */
         public function edit(Category $category)
         {
-            $parents = Category::roots();
-            return view('admin.category.edit', compact('category', 'parents'));
+            $items = Category::all();
+            return view('admin.category.edit', compact('category', 'items'));
         }
 
         /**
          * Update the specified resource in storage.
          */
-        public function update(Request $request, Category $category)
+        public function update(CategoryCatalogRequest $request, Category $category)
         {
             $data = $request->except(['_token', '_method']);
             $data['image'] = $this->imageSaver->upload($request, $category, 'category');

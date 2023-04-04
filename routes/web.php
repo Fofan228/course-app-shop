@@ -1,6 +1,7 @@
 <?php
 
     use App\Http\Controllers\Admin\AdminController;
+    use App\Http\Controllers\Admin\BrandController;
     use App\Http\Controllers\Admin\CategoryController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BasketController;
@@ -16,6 +17,7 @@
     Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('index', [AdminController::class, 'index'])->name('index');
         Route::resource('category', CategoryController::class);
+        Route::resource('brand', BrandController::class);
     });
 
     Route::middleware("auth")->group(function () {
