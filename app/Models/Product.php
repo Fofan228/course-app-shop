@@ -6,6 +6,14 @@
 
     class Product extends Model
     {
+        protected $fillable = [
+            'category_id',
+            'brand_id',
+            'name',
+            'slug',
+            'content',
+            'image',
+        ];
 //        public function getCategory()
 //        {
 //            return DB::table('categories')
@@ -27,7 +35,8 @@
             return $this->belongsTo(Brand::class);
         }
 
-        public function baskets() {
+        public function baskets()
+        {
             return $this->belongsToMany(Basket::class)->withPivot('quantity');
         }
     }

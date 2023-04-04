@@ -3,6 +3,7 @@
     use App\Http\Controllers\Admin\AdminController;
     use App\Http\Controllers\Admin\BrandController;
     use App\Http\Controllers\Admin\CategoryController;
+    use App\Http\Controllers\Admin\ProductController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BasketController;
     use App\Http\Controllers\CatalogController;
@@ -18,6 +19,9 @@
         Route::get('index', [AdminController::class, 'index'])->name('index');
         Route::resource('category', CategoryController::class);
         Route::resource('brand', BrandController::class);
+        Route::resource('product', ProductController::class);
+        Route::get('product/category/{category}', [ProductController::class, 'category'])
+            ->name('product.category');
     });
 
     Route::middleware("auth")->group(function () {
