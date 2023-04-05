@@ -38,6 +38,15 @@
                 'destroy'
             ]
         ]);
+
+        Route::resource('user', \App\Http\Controllers\Admin\UserController::class, [
+            'except' => [
+                'create',
+                'store',
+                'show',
+                'destroy'
+            ]
+        ]);
     });
 
     Route::middleware('auth')->group(function () {

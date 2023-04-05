@@ -2,9 +2,7 @@
 
     namespace App\Models;
 
-    use DateTimeZone;
     use Illuminate\Database\Eloquent\Model;
-    use Illuminate\Support\Carbon;
 
     class Order extends Model
     {
@@ -21,10 +19,10 @@
 
         public const STATUSES = [
             0 => 'Новый',
-            1 => 'Обработан',
+            1 => 'Собирается',
             2 => 'Оплачен',
-            3 => 'Доставлен',
-            4 => 'Завершен',
+            3 => 'Передан на доставку',
+            4 => 'Выполнен',
         ];
 
         public function items()

@@ -23,6 +23,12 @@
             'name',
             'email',
             'password',
+            'admin',
+        ];
+
+        public const ROLES = [
+            0 => 'Пользователь',
+            1 => 'Администратор',
         ];
 
         /**
