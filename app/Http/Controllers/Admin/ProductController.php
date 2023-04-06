@@ -93,7 +93,7 @@
             $this->imageSaver->remove($product, 'product');
             $product->delete();
             session()->flash('Товар каталога успешно удален');
-            return redirect(route('admin.category.index'));
+            return redirect(route('admin.product.index'));
         }
 
         public function category(Category $category)

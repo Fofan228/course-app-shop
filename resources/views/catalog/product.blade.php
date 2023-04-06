@@ -9,10 +9,12 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://via.placeholder.com/400x400"
-                                 alt="" class="img-fluid">
-                        </div>
+                        @if ($product->image)
+                            @php $url = url('storage/catalog/product/image/' . $product->image) @endphp
+                            <img src="{{ $url }}" class="img-fluid" alt="">
+                        @else
+                            <img src="https://via.placeholder.com/400x400" class="img-fluid" alt="">
+                        @endif
                         <div class="col-md-6">
                             <p>Цена: {{ number_format($product->price, 2, '.', '') }}</p>
                             <form action="{{ route('basket.add', ['id' => $product->id]) }}"

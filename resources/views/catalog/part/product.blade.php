@@ -3,9 +3,12 @@
         <div class="card-header">
             <h3 class="mb-0">{{ $product->name }}</h3>
         </div>
-        <div class="card-body p-0">
-            <img src="https://via.placeholder.com/400x120" alt="" class="img-fluid">
-        </div>
+        @if ($product->image)
+            @php $url = url('storage/catalog/product/thumb/' . $product->image) @endphp
+            <img src="{{ $url }}" class="img-fluid" alt="">
+        @else
+            <img src="https://via.placeholder.com/300x150" class="img-fluid" alt="">
+        @endif
         <div class="card-footer">
             <form action="{{ route('basket.add', ['id' => $product->id]) }}"
                   method="post" class="d-inline">

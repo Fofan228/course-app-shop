@@ -12,19 +12,10 @@
             'name',
             'slug',
             'content',
+            'price',
             'image',
         ];
-//        public function getCategory()
-//        {
-//            return DB::table('categories')
-//                ->find($this->category_id);
-//        }
-//
-//        public function getBrand()
-//        {
-//            return DB::table('brands')
-//                ->find($this->brand_id);
-//        }
+
         public function category()
         {
             return $this->belongsTo(Category::class);

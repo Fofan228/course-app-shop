@@ -2,11 +2,14 @@
 
     namespace App\Http\Controllers;
 
+    use App\Mail\SaveOrder;
     use App\Models\Basket;
     use App\Models\Order;
+    use App\Models\User;
     use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Cookie;
+    use Illuminate\Support\Facades\Mail;
 
     class BasketController extends Controller
     {
@@ -74,9 +77,13 @@
                 ]);
             }
 
+            $user = User::where(["email" => $request["email"]])->first();
+
+            Mail::to($user)->send(new SaveOrder($order));
+
             $this->basket->delete();
 
-            session()->flash('success', 'Ваш заказ успешно размещен');
+            session()->flash('success', 'Ваш заказ оформлен, проверьте указанный Вами E-mail');
             return redirect(route('basket.success'))->with('order_id', $order->id);
         }
 

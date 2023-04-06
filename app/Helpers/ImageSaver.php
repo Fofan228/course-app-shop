@@ -35,9 +35,9 @@
                 $path = Storage::disk('public')->path($path);
                 $name = basename($path);
                 $dst = 'catalog/' . $dir . '/image/';
-                $this->resize($path, $dst, 600, 300, $ext);
+                $this->resize($path, $dst, 400, 400, $ext);
                 $dst = 'catalog/' . $dir . '/thumb/';
-                $this->resize($path, $dst, 300, 150, $ext);
+                $this->resize($path, $dst, 400, 200, $ext);
             }
             return $name;
         }

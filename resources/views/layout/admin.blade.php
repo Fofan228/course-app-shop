@@ -22,19 +22,19 @@
         <div class="collapse navbar-collapse" id="navbar-example">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Заказы</a>
+                    <a class="nav-link" href="{{ route('admin.category.index') }}">Категории</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Каталог</a>
+                    <a class="nav-link" href="{{ route('admin.brand.index') }}">Бренды</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Категории</a>
+                    <a class="nav-link" href="{{ route('admin.product.index') }}">Товары</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Бренды</a>
+                    <a class="nav-link" href="{{ route('admin.order.index') }}">Заказы</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Товары</a>
+                    <a class="nav-link" href="{{ route('admin.user.index') }}">Пользователи</a>
                 </li>
             </ul>
 

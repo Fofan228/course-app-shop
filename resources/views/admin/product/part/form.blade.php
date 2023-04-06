@@ -32,6 +32,10 @@
     </select>
 </div>
 <div class="form-group">
+    <input type="number" class="form-control" name="price" placeholder="Цена"
+           required value="{{ old('price') ?? $product->price ?? '' }}">
+</div>
+<div class="form-group">
     <textarea class="form-control" name="content" placeholder="Описание"
               rows="4">{{ old('content') ?? $product->content ?? '' }}</textarea>
 </div>

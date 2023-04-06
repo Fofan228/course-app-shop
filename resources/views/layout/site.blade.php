@@ -26,10 +26,7 @@
                     <a class="nav-link" href="{{ route('catalog.index') }}">Каталог</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Доставка</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
+                    <a class="nav-link" href="{{ route('brand.index') }}">Бренды</a>
                 </li>
             </ul>
 
@@ -42,10 +39,6 @@
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    {{--                    <a class="nav-link @if ($positions) text-success @endif" href="{{ route('basket.index') }}">--}}
-                    {{--                        Корзина--}}
-                    {{--                        @if ($positions) ({{ $positions }}) @endif--}}
-                    {{--                    </a>--}}
                     <a class="nav-link" href="{{ route('basket.index') }}">Корзина</a>
                 </li>
                 @guest
